@@ -347,7 +347,7 @@ $('submit').addEventListener('click',async()=>{
   $('msg').textContent='Hi Anastasia! I would like to book '+w.t+' on '+w.d+' at 12:00.\nPeople: '+state.people+' (€'+w.p+' × '+state.people+' = €'+(w.p*state.people)+')\nLanguage: '+state.lang+'\nName: '+n+'\nEmail: '+em+(c?'\nContact: '+c:'');
   const btn=$('submit');btn.disabled=true;btn.textContent='Sending…';
   let ok=!ENDPOINT;
-  if(ENDPOINT){try{const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({_subject:'New booking: '+w.t+' '+w.d+' · '+n,_replyto:em,_template:'table',_captcha:'false'},data))});ok=r.ok;}catch(e){ok=false;}}
+  if(ENDPOINT){try{const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({_subject:'New booking: '+w.t+' '+w.d+' · '+n,_replyto:em,_template:'table',_captcha:'false'},data))});const j=await r.json().catch(()=>({}));ok=r.ok&&String(j.success)!=='false';}catch(e){ok=false;}}
   btn.disabled=false;btn.textContent='Request booking';
   if(!ok){err.textContent='Something went wrong. Please try again, or message Anastasia on Instagram.';err.hidden=false;return;}
   $('dTitle').textContent='Thank you, '+n+'!';
