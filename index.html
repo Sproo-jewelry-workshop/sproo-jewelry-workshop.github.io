@@ -336,7 +336,7 @@ document.querySelectorAll('.wsopt').forEach(b=>b.addEventListener('click',()=>{s
 document.querySelectorAll('.langopt').forEach(b=>b.addEventListener('click',()=>{state.lang=b.dataset.lang;render();}));
 $('minus').addEventListener('click',()=>{state.people=Math.max(1,state.people-1);render();});
 $('plus').addEventListener('click',()=>{state.people=Math.min(8,state.people+1);render();});
-const ENDPOINT='https://formsubmit.co/ajax/mydes2022@gmail.com';
+const ENDPOINT='https://formsubmit.co/ajax/6b07f43ec22889c8037aa0963cb4d3be';
 $('submit').addEventListener('click',async()=>{
   const n=$('fName').value.trim(),em=$('fEmail').value.trim(),c=$('fContact').value.trim(),err=$('err');
   if(!n||!em){err.textContent='Please add your name and email.';err.hidden=false;return;}
